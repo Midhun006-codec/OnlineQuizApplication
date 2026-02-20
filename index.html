@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Quiz Application</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Login Page -->
+    <div id="loginPage" class="page active">
+        <div class="container">
+            <div class="login-box">
+                <h1>🎓 Quiz Application</h1>
+                <h2>Login</h2>
+                <form id="loginForm">
+                    <div class="input-group">
+                        <label>Username</label>
+                        <input type="text" id="username" placeholder="Enter username" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Password</label>
+                        <input type="password" id="password" placeholder="Enter password" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Login</button>
+                </form>
+                <div class="hint">
+                    <p><strong>Admin:</strong> admin / admin123</p>
+                    <p><strong>User:</strong> user / user123</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Admin Panel -->
+    <div id="adminPage" class="page">
+        <div class="container">
+            <div class="header">
+                <h1>Admin Panel - Question Settings</h1>
+                <button onclick="logout()" class="btn btn-secondary">Logout</button>
+            </div>
+            <div class="admin-panel">
+                <h3>Add New Question</h3>
+                <form id="addQuestionForm">
+                    <div class="input-group">
+                        <label>Question</label>
+                        <input type="text" id="newQuestion" placeholder="Enter question" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Option 1</label>
+                        <input type="text" id="option1" placeholder="Option 1" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Option 2</label>
+                        <input type="text" id="option2" placeholder="Option 2" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Option 3</label>
+                        <input type="text" id="option3" placeholder="Option 3" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Option 4</label>
+                        <input type="text" id="option4" placeholder="Option 4" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Correct Answer (1-4)</label>
+                        <input type="number" id="correctAnswer" min="1" max="4" placeholder="Enter 1, 2, 3, or 4" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Add Question</button>
+                </form>
+                
+                <h3>Existing Questions</h3>
+                <div id="questionsList"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- User Quiz Page -->
+    <div id="quizPage" class="page">
+        <div class="container">
+            <div class="header">
+                <h1>Online Quiz</h1>
+                <div class="user-info">
+                    <span id="userDisplay"></span>
+                    <button onclick="logout()" class="btn btn-secondary">Logout</button>
+                </div>
+            </div>
+            <div class="quiz-container">
+                <div class="progress-bar">
+                    <div id="progressFill" class="progress-fill"></div>
+                </div>
+                <div class="question-counter">
+                    Question <span id="currentQ">1</span> of <span id="totalQ">10</span>
+                </div>
+                <div id="questionText" class="question-text"></div>
+                <div id="optionsContainer" class="options-container"></div>
+                <div class="quiz-buttons">
+                    <button id="nextBtn" class="btn btn-primary" onclick="handleNextQuestion()" style="display: none;">Next Question</button>
+                    <button id="submitBtn" class="btn btn-primary" onclick="submitQuiz()" style="display: none;">Submit Quiz</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Page -->
+    <div id="resultPage" class="page">
+        <div class="container">
+            <div class="result-container">
+                <h1>🎉 Quiz Completed!</h1>
+                <div class="score-display">
+                    <div class="score-circle">
+                        <span id="scoreFraction">0/0</span>
+                    </div>
+                    <h2 id="scoreText"></h2>
+                    <p id="scoreMessage"></p>
+                </div>
+                <div class="result-details">
+                    <div class="detail-item">
+                        <span class="label">Total Questions:</span>
+                        <span id="totalQuestions">0</span>
+                    </div>
+                    <div class="detail-item correct">
+                        <span class="label">Correct Answers:</span>
+                        <span id="correctAnswers">0</span>
+                    </div>
+                    <div class="detail-item wrong">
+                        <span class="label">Wrong Answers:</span>
+                        <span id="wrongAnswers">0</span>
+                    </div>
+                </div>
+                <div class="result-actions">
+                    <button onclick="logout()" class="btn btn-secondary">Logout</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/questions.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/quiz.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
